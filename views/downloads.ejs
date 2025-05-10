@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download File - QuickShare</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <nav>
+                <div class="logo">
+                    <img src="/api/placeholder/40/40" alt="QuickShare Logo"> QuickShare
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <div class="download-container">
+                <% if(locals.error){ %>
+                    <div class="error-message">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <h3><%= locals.error %></h3>
+                        <p>This link may have expired or is invalid.</p>
+                        <a href="/" class="back-btn">Back to Homepage</a>
+                    </div>
+                <% } else { %>
+                    <div class="success-download">
+                        <i class="fas fa-file-download"></i>
+                        <h2>Your file is ready to download</h2>
+                        <p>Link expires in 24 hours</p>
+                        
+                        <div class="file-info">
+                            <h4><%= fileName %></h4>
+                            <span class="file-size"><%= parseInt(fileSize / 1000) %> KB</span>
+                        </div>
+                        
+                        <div class="download-btn-container">
+                            <a href="<%= downloadLink %>" class="download-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                    <polyline points="7 10 12 15 17 10"></polyline>
+                                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                                </svg>
+                                Download File
+                            </a>
+                        </div>
+                        
+                        <div class="qr-container">
+                            <h3>Or scan this QR code</h3>
+                            <img src="/api/files/generate-qr/<%= uuid %>" alt="QR Code" class="qr-image">
+                        </div>
+                    </div>
+                <% } %>
+            </div>
+        </main>
+
+        <footer>
+            <p>© 2025 QuickShare. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <style>
+        .download-container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .error-message i,
+        .success-download i {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+        
+        .error-message i {
+            color: var(--accent-color);
+        }
+        
+        .success-download i {
+            color: var(--primary-color);
+        }
+        
+        .file-info {
+            background-color: #f8f9fa;
+            border-radius: var(--border-radius);
+            padding: 15px;
+            margin: 20px 0;
+        }
+        
+        .file-size {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: var(--dark-color);
+            color: white;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        
+        .download-btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: var(--border-radius);
+            font-size: 18px;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+        
+        .download-btn:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .qr-container {
+            margin-top: 40px;
+        }
+        
+        .qr-image {
+            margin-top: 15px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            background-color: white;
+            border-radius: var(--border-radius);
+        }
+        
+        .back-btn {
+            display: inline-block;
+            background-color: var(--gray-color);
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: var(--border-radius);
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+        
+        .back-btn:hover {
+            background-color: #5a6268;
+        }
+    </style>
+</body>
+</html>

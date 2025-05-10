@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickShare - Fast & Secure File Sharing</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <nav>
+                <div class="site-title">
+                    <a href="/">QuickShare</a>
+                </div>
+                
+                <div class="nav-links">
+                    <ul>
+                        <li><a href="#how-it-works">How it Works</a></li>
+                        <li><a href="#about">About</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <div class="upload-container">
+                <h1>Fast & Secure File Sharing</h1>
+                <p>Upload and share files with anyone - links expire in 24 hours</p>
+                
+                <form id="upload-form">
+                    <div class="drop-zone">
+                        <div class="icon-container">
+                            <i class="fas fa-file-upload"></i>
+                            <p>Drag & Drop your files here or</p>
+                            <button type="button" id="browse-btn">Browse Files</button>
+                        </div>
+                        <input type="file" id="file-input" hidden>
+                    </div>
+
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-bar-fill" style="width: 0%"></div>
+                        </div>
+                        <div class="progress-status">
+                            <span class="percent">0%</span>
+                            <span class="upload-status"></span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="share-container hidden">
+                <h2>Your file is ready to share!</h2>
+                
+                <div class="link-container">
+                    <input type="text" id="share-link" readonly>
+                    <button id="copy-btn">Copy</button>
+                </div>
+
+                <div class="qr-code-container">
+                    <h3>Scan QR Code</h3>
+                    <div id="qr-code"></div>
+                    <button id="download-qr">Download QR</button>
+                </div>
+
+                <div class="or-divider">
+                    <span>OR</span>
+                </div>
+
+                <div class="email-form">
+                    <h3>Send via Email</h3>
+                    <div class="input-group">
+                        <input type="email" id="sender-email" placeholder="Your email">
+                    </div>
+                    <div class="input-group">
+                        <input type="email" id="receiver-email" placeholder="Recipient's email">
+                    </div>
+                    <button id="send-email-btn">Send Email</button>
+                </div>
+            </div>
+        </main>
+
+        <section id="how-it-works" class="how-it-works">
+            <h2>How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-icon"><i class="fas fa-upload"></i></div>
+                    <h3>Upload</h3>
+                    <p>Drop your file or browse to select</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon"><i class="fas fa-link"></i></div>
+                    <h3>Share</h3>
+                    <p>Get a secure link or QR code</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon"><i class="fas fa-envelope"></i></div>
+                    <h3>Email</h3>
+                    <p>Email the link directly to recipients</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon"><i class="fas fa-clock"></i></div>
+                    <h3>Expires</h3>
+                    <p>Links automatically expire in 24 hours</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <h2>About QuickShare</h2>
+            <p>QuickShare is a fast, secure, and simple way to share files with anyone. 
+            No account required, just upload and share. Files are automatically deleted 
+            after 24 hours for your privacy and security.</p>
+        </section>
+
+        <footer>
+            <p>© 2025 QuickShare. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- QR Code Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/script.js"></script>
+</body>
+</html>
